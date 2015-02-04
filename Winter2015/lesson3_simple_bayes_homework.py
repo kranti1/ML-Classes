@@ -91,6 +91,12 @@ def ComputeArticleScoreForTopic(article_words_list, topic_prior, topic_word_weig
   #
   #  COMPLETE THIS CODE
   #
+  # To compute score for an article score = P(A | B1,B2,...,Bn) = PRODUCT[ P(Bi | A) ] * P(A) / PRODUCT[ P(Bi) ]
+  # Numerator: 
+  #
+  #
+ 
+  GetWordProbability(article_words_list, topic_prior, topic_word_weights)
   score = 0.0
 
 
@@ -99,6 +105,18 @@ def ComputeArticleScoreForTopic(article_words_list, topic_prior, topic_word_weig
 ################################################################################
 ################################################################################
 
+def GetWordProbability(article_words_list, topic_prior, topic_word_weights):
+    global g_word_priors
+    global g_word_default_prior
+
+    for w in article_words_list:
+        print w
+
+
+   
+    return 0
+    
+    
 
 ################################################################################
 #
