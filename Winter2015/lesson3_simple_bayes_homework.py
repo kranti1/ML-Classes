@@ -8,9 +8,7 @@
 ################################################################################
 ################################################################################
 
-
-
-################################################################################
+########
 #
 # GLOBAL DATA
 #
@@ -21,6 +19,8 @@
 # We just use a hard-coded model.
 # This 'bag-of-words' model is supposedly trained from labeled articles on 3 topics.
 #
+
+########################################################################
 # Each topic model has a prior probability : this is just its ratio vs all other article topics.
 #
 # Each topic model has conditional probabilities for a set of words.
