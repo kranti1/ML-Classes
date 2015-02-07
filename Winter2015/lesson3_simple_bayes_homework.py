@@ -105,16 +105,21 @@ def ComputeArticleScoreForTopic(article_words_list, topic_prior, topic_word_weig
 ################################################################################
 ################################################################################
 
-def GetWordProbability(article_words_list, topic_prior, topic_word_weights):
+def GetWordProbability(article_word, topic, prior=0):
     global g_word_priors
     global g_word_default_prior
+    article_words_list = g_article_A_text.split(' ')
+    topic_prior = g_topics_model[topic]['prior']
+    topic_word_weights = g_topics_model[topic]['weights']
 
-    for w in article_words_list:
-        print w
+    
+    if (article_word in topic_word_weights and prior ==0):
+        return topic_word_weights[article_word]
+    elif article_word in g_word_priors:   
+        return g_word_priors[article_word]
+    else:
+        return g_word_default_prior
 
-
-   
-    return 0
     
     
 
@@ -155,7 +160,11 @@ def RunModels():
 # This is the main() entrypoint of every top-level Python program. 
 #
 if __name__ == '__main__':
-  RunModels()
+  print GetWordProbability('football', 'SPORTS')
+  print GetWordProbability('football', 'SPORTS', 1)
+  print GetWordProbability('the', 'SPORTS')
+  print GetWordProbability('foo', 'SPORTS')
+
 
 
 
