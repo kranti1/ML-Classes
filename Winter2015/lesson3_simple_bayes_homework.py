@@ -1,7 +1,7 @@
 ################################################################################
 #
 #  MLEARN 210 : homework #3
-#
+#  Kartik Shridhar
 ################################################################################
 
 
@@ -95,12 +95,8 @@ def ComputeArticleScoreForTopic(article_words_list, topic_prior, topic_word_weig
   #  COMPLETE THIS CODE
   #
   # To compute score for an article score = P(A | B1,B2,...,Bn) = PRODUCT[ P(Bi | A) ] * P(A) / PRODUCT[ P(Bi) ]
-  # Numerator: 
-  #
-  #]
+
   score = 1
-  Pab =1
-  Pb = 1
   for word in article_words_list:
 
     if (word in topic_word_weights):
@@ -115,36 +111,12 @@ def ComputeArticleScoreForTopic(article_words_list, topic_prior, topic_word_weig
     else:
         Pdin = g_word_default_prior
     
-    Pab = Pab * Pnum
-    Pb = Pb * Pdin
     score = score * Pnum/Pdin
-  
-  score = score * topic_prior    
-  score2 = Pab/Pb * topic_prior
-  
-  #print "{}  = {}".format("Pab",Pab) 
-  #print "{}  = {}".format("Pb",Pb) 
-  #print "{}  = {}".format("score2",score2) 
-     
-  return score2 
+      
+  return score * topic_prior
 
 ################################################################################
 ################################################################################
-
-def GetWordProbability(article_word, topic, prior=0):
-    global g_word_priors
-    global g_word_default_prior
-    article_words_list = g_article_A_text.split(' ')
-    topic_prior = g_topics_model[topic]['prior']
-    topic_word_weights = g_topics_model[topic]['weights']
-
-    
-    if (article_word in topic_word_weights and prior ==0):
-        return topic_word_weights[article_word]
-    elif article_word in g_word_priors:   
-        return g_word_priors[article_word]
-    else:
-        return g_word_default_prior
 
     
     
