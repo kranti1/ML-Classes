@@ -69,6 +69,9 @@ g_all_articles_map = {
       'article_E' : g_article_E_text,
     }    
 
+#g_all_articles_map = {
+#      'article_A' : g_article_A_text,
+#    }    
 
 ################################################################################
 #
@@ -94,8 +97,10 @@ def ComputeArticleScoreForTopic(article_words_list, topic_prior, topic_word_weig
   # To compute score for an article score = P(A | B1,B2,...,Bn) = PRODUCT[ P(Bi | A) ] * P(A) / PRODUCT[ P(Bi) ]
   # Numerator: 
   #
-  #
+  #]
   score = 1
+  Pab =1
+  Pb = 1
   for word in article_words_list:
 
     if (word in topic_word_weights):
@@ -109,12 +114,19 @@ def ComputeArticleScoreForTopic(article_words_list, topic_prior, topic_word_weig
         Pdin = g_word_priors[word]
     else:
         Pdin = g_word_default_prior
-    score *= score * Pnum/Pdin
-    if score > 1:
-      score = score* topic_prior
-
-
-  return score 
+    
+    Pab = Pab * Pnum
+    Pb = Pb * Pdin
+    score = score * Pnum/Pdin
+  
+  score = score * topic_prior    
+  score2 = Pab/Pb * topic_prior
+  
+  #print "{}  = {}".format("Pab",Pab) 
+  #print "{}  = {}".format("Pb",Pb) 
+  #print "{}  = {}".format("score2",score2) 
+     
+  return score2 
 
 ################################################################################
 ################################################################################
