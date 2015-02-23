@@ -99,7 +99,8 @@ g_VAR_ABBREV_LOOKUP = { 'P':"PHONE", 'W':"WALKMAN", 'R':"RADIO", 'B':"BATTERIES"
 g_EVIDENCE_MAP = {}
 
 
-g_DEBUG_ON = False
+g_DEBUG_ON = True
+g_DEBUG_ON2 = False  # TODO remove before submitting
 
 g_ENABLE_BACKWARD_PROPAGATION = False   # BACKWARD_PROPAGATION is initially disabled for the initial phase of this assignment
 
@@ -260,9 +261,15 @@ def InferVarProbFromInputs(var_name, all_input_vars_list, var_prob_map):
 
       ##############################
       #
-      #  COMPLETE THIS CODE  # 1
+      #  TODO COMPLETE THIS CODE  # 1
       #
       ##############################
+    if g_DEBUG_ON:
+      #print ("pos_neg_keys_list = %s" % pos_neg_keys_list)  # TODO Remove before submitting.
+      print ("compound_var_key = %s" % compound_var_key)  # TODO Remove before submitting.
+
+    var_prob = prob_keys_map[compound_var_key]
+
 
 
 
@@ -390,13 +397,24 @@ def RunInference():
         #
         for var_key in var_prob_map:
 
+          if g_DEBUG_ON2:
+            print("var_key =  %s ... " % var_key)  #TODO Remove before submitting
+
+
           if var_key in g_EVIDENCE_MAP:
             #
             #  Don't modify evidence variables.
             #
+
+            if g_DEBUG_ON2:
+                print(" SKIPPED in g_EVIDENCE_MAP var_key =  %s ... " % var_key)  # TODO Remove before submitting
+
             pass
 
           elif var_key in stabilized_vars_map:
+            if g_DEBUG_ON2:
+             print("SKIPPED stabilized_vars_map in  var_key =  %s ... " % var_key) # TODO Remove before submitting
+
             pass
             
           else:
@@ -413,6 +431,8 @@ def RunInference():
               if var_prob_map[input_var] == -1:
                 # NOPE !  A requred input variable does not have a value yet.  Keep searching.
                 have_all_inputs = False
+                if g_DEBUG_ON2:
+                    print(" SKIPPED Required input variable  %s does not have a value"  % input_var) #TODO remove before submitting
                 break
   
             if have_all_inputs:
