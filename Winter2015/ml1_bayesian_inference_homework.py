@@ -100,7 +100,7 @@ g_VAR_ABBREV_LOOKUP = {'P': "PHONE", 'W': "WALKMAN", 'R': "RADIO", 'B': "BATTERI
 #
 g_EVIDENCE_MAP = {}
 
-g_DEBUG_ON = True
+g_DEBUG_ON = False
 g_DEBUG_ON2 = False  # TODO remove before submitting
 
 g_ENABLE_BACKWARD_PROPAGATION = False  # BACKWARD_PROPAGATION is initially disabled for the initial phase of this assignment
@@ -268,7 +268,7 @@ def InferVarProbFromInputs(var_name, all_input_vars_list, var_prob_map):
             #  TODO COMPLETE THIS CODE  # 1
             #
             ##############################
-        if g_DEBUG_ON:
+        if g_DEBUG_ON2:
            print ("compound_var_key = %s" % compound_var_key)  # TODO Remove before submitting.
 
         # Determine if the negative probabilvar_prob_mapty is needed
@@ -284,7 +284,7 @@ def InferVarProbFromInputs(var_name, all_input_vars_list, var_prob_map):
 
         if matching_compound_var_found:
             var_prob = prob_keys_map[compound_var_key]
-            if g_DEBUG_ON:
+            if g_DEBUG_ON2:
                 print ("MATCH FOUND compound_var_key = %s" % compound_var_key)  # TODO Remove before submitting.
 
 
