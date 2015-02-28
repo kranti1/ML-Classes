@@ -271,22 +271,17 @@ def InferVarProbFromInputs(var_name, all_input_vars_list, var_prob_map):
         if g_DEBUG_ON2:
            print ("compound_var_key = %s" % compound_var_key)  # TODO Remove before submitting.
 
-        # Determine if the negative probabilvar_prob_mapty is needed
-        matching_compound_var_found = True
-        for var_input_name in all_input_vars_list:
-           prob = var_prob_map[var_input_name]
 
-           if prob == 0:
-               var_input_name = NegateVariableKey(var_input_name)
+        for pos_neg_key in pos_neg_keys_list:
+           if pos_neg_key[0] == "!":
+               pos_prob_var = NegateVariableKey(pos_neg_key)
+               prob = 1- var_prob_map[pos_prob_var]
+           else:
+               prob = var_prob_map[pos_neg_key]
 
-           if not var_input_name in pos_neg_keys_list:
-               matching_compound_var_found = False
+           cond_prob *= prob
 
-        if matching_compound_var_found:
-            var_prob = prob_keys_map[compound_var_key]
-            if g_DEBUG_ON2:
-                print ("MATCH FOUND compound_var_key = %s" % compound_var_key)  # TODO Remove before submitting.
-
+        var_prob += cond_prob
 
     if g_DEBUG_ON:
         print(" < InferVarProbFromInputs %s  returning %0.04f " % (var_name, var_prob))
