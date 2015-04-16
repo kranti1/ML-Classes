@@ -1,5 +1,6 @@
 # Homework #1 ML 302
 import numpy
+import matplotlib.pyplot as plt
 
 
 def max_cubed(x):
@@ -21,13 +22,23 @@ def CubicSpline(w3, t):
     return result
 
 
+def Linear_Model():
+    data = numpy.loadtxt("/Users/kartiks/Documents/github/ml/Spring2015/HW1_sample_data/hw1_sample1_train.txt")
+    X = [a[0] for a in data]
+    Y = [a[1] for a in data]
+    # Matrix
+    A = [[1, a] for a in X]
+    weights = numpy.linalg.lstsq(XX, Y)[0]
+    return weights
+    
+    
 
 ###############################################################################
 #
 # This is the main() entrypoint of every top-level Python program.
-#
-# if __name__ == '__main__':
-#
+##
+## if __name__ == '__main__':
+##
 #  data = numpy.loadtxt("/Users/kartiks/Documents/github/ml/Spring2015/HW1_sample_data/hw1_sample1_train.txt")
 #  X = [a[0] for a in data]
 #  Y = [a[1] for a in data]

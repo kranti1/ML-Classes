@@ -1,5 +1,6 @@
 # Homework #1 ML 302
-import numpy
+from import numpy *
+import matplotlib.pyplot as plt
 
 
 def max_cubed(x):
@@ -20,7 +21,25 @@ def CubicSpline(w3, t):
 
     return result
 
+# training set "/Users/kartiks/Documents/github/ml/Spring2015/HW1_sample_data/hw1_sample1_train.txt"
 
+
+def LinearRegressoin(input_file):
+    data = numpy.loadtxt(input_file)
+    X = [a[0] for a in data]
+    Y = [a[1] for a in data]
+    # Matrix
+    A = [[1, a] for a in X]
+    weights = numpy.linalg.lstsq(A, Y)[0]
+    return weights
+   
+   
+   def MeanSquaredError(w):
+    testdata = numpy.loadtxt("/Users/kartiks/Documents/github/ml/Spring2015/HW1_sample_data/hw1_sample1_test.txt")
+    X = [a[0] for a in testdata]
+    Y = [a[1] for a in testdata]
+    Y1 = [w[0]+w[1]*a for a in X]
+    
 
 ###############################################################################
 #
