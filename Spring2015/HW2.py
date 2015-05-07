@@ -24,6 +24,11 @@ def cub_spl_basis(t):
 def nat_spl(t, r, i):
     return ((spl(t, r[i]) - spl(t, r[i+1]))/(r[i+1]-r[i]))
 
+def sigmoid (t):
+    return (1/(1+e^-t))
+    
+        
+
 
 def natural_cub_spl_basis(t, r):
     if len(r) <= 2:
@@ -60,10 +65,18 @@ def k_fold(data, k):
 # if __name__ == '__main__':
 #
 
-sample1_train = "/Users/kartiks/Documents/github/ml/Spring2015/HW1_sample_data/hw1_sample1_train.txt"
-sample1_test = "/Users/kartiks/Documents/github/ml/Spring2015/HW1_sample_data/hw1_sample1_test.txt"
-sample2_train = "/Users/kartiks/Documents/github/ml/Spring2015/HW1_sample_data/hw1_sample2_train.txt"
-sample2_test = "/Users/kartiks/Documents/github/ml/Spring2015/HW1_sample_data/hw1_sample2_test.txt"
+#sample1_train = "/Users/kartiks/Documents/github/ml/Spring2015/HW1_sample_data/hw1_sample1_train.txt"
+#sample1_test = "/Users/kartiks/Documents/github/ml/Spring2015/HW1_sample_data/hw1_sample1_test.txt"
+#sample2_train = "/Users/kartiks/Documents/github/ml/Spring2015/HW1_sample_data/hw1_sample2_train.txt"
+#sample2_test = "/Users/kartiks/Documents/github/ml/Spring2015/HW1_sample_data/hw1_sample2_test.txt"
+
+sample1_train = "c:/docs/github/ml/Spring2015/HW1_sample_data/hw1_sample1_train.txt"
+sample1_test = "c:/docs/github/ml/Spring2015/HW1_sample_data/hw1_sample1_test.txt"
+sample2_train = "c:/docs/github/ml/Spring2015/HW1_sample_data/hw1_sample2_train.txt"
+sample2_test = "c:/docs/github/ml/Spring2015/HW1_sample_data/hw1_sample2_test.txt"
+
+
+
 
 data = np.loadtxt(sample1_test)
 
