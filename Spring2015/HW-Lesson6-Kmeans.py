@@ -42,15 +42,18 @@ def find_centers(X, K):
         clusters = cluster_points(X, mu)
         # Reevaluate centers
         mu = reevaluate_centers(oldmu, clusters)
-        print "mu[0] = %s" % mu[0]
         plot_clusters (clusters,K, mu)
     return(mu, clusters)
 
 
 def plot_clusters (clusters,K, mu):
+        
+    
+    
     if (K == 3):
 #       plt.plot (clusters[0], 'ro', clusters[1] , 'go', clusters[2], 'bo' , markersize=5)
 #       plt.plot (mu[0],'r*' , mu[1], 'g*', mu[2] , 'b*', markersize=10) 
+  
         t0 = np.array(clusters[0])
         x0 = t0[:,0]
         y0 = t0[:,1]
@@ -73,6 +76,41 @@ def plot_clusters (clusters,K, mu):
         plt.plot (mu[2][0], mu[2][1],'b*', markersize=10) 
         plt.show()
     
+ 
+def plot_clustersK (clusters,K, mu):
+    size = len(clusters.keys())
+    assert (size == K), "# Clusters and K-Value Mismatch"
+    
+    # need to complete
+    for i in range(size):
+        M = np.array(clusters[i])
+        
+    if (K == 3):
+#       plt.plot (clusters[0], 'ro', clusters[1] , 'go', clusters[2], 'bo' , markersize=5)
+#       plt.plot (mu[0],'r*' , mu[1], 'g*', mu[2] , 'b*', markersize=10) 
+  
+        t0 = np.array(clusters[0])
+        x0 = t0[:,0]
+        y0 = t0[:,1]
+        plt.plot (x0, y0,'ro' , markersize=5)
+ 
+        t1 = np.array(clusters[1])
+        x1 = t1[:,0]
+        y1 = t1[:,1]
+        plt.plot (x1, y1,'go' , markersize=5)
+  
+        t2 = np.array(clusters[2])
+        x2 = t2[:,0]
+        y2 = t2[:,1]
+        plt.plot (x2, y2,'bo' , markersize=5)
+
+
+        mu = np.array(mu)
+        plt.plot (mu[0][0], mu[0][1],'r*', markersize=10) 
+        plt.plot (mu[1][0], mu[1][1],'g*', markersize=10) 
+        plt.plot (mu[2][0], mu[2][1],'b*', markersize=10) 
+        plt.show() 
+ 
  
 def init_board(N):
     X = np.array([(random.uniform(-1, 1), random.uniform(-1, 1)) for i in range(N)])
