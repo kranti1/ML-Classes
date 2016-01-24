@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import math
 
 def init_two_layer_model(input_size, hidden_size, output_size):
   """
@@ -75,6 +76,11 @@ def two_layer_net(X, model, y=None, reg=0.0):
 
   # compute the forward pass
   scores = None
+  
+  L1 = np.dot(X, model['W1']) + model['b1']
+  scores= np.dot(L1, model['W2']) + model ['b2']
+  
+  
   #############################################################################
   # TODO: Perform the forward pass, computing the class scores for the input. #
   # Store the result in the scores variable, which should be an array of      #
